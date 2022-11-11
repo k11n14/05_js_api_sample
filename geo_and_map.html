@@ -27,8 +27,70 @@
   <div id="map"></div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src='https://www.bing.com/api/maps/mapcontrol?key=YOUR_API_KEY' async defer></script>
+  <script
+    src='https://www.bing.com/api/maps/mapcontrol?key=AqCT21lRryL1h7ok26SJkReU4rUFNQztuGiNZLP_pCzxw2JUVj5BlWS - SsMU0GlP'
+    async defer></script>
   <script>
+
+
+    let map;
+
+    function mapsInit(position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      map = new Microsoft.Maps.Map("#map", {
+        center: {
+          latitude: lat,
+          longitude: lng,
+        },
+        zoom: 15,
+      });
+    }
+    // 3 種類のオプションを設定することができる．
+    // 位置情報の取得に必要なオプション（前項で紹介したもの，サンプルでは option）
+    // オブジェクトの形式で 3 項目を指定する．
+    const option = {
+      // enableHighAccuracy	対応端末で GPS を使用するかどうかの設定．trueまたはfalseで指定．
+      enableHighAccuracy: true,
+      // maximumAge	指定時間以内であれば前回取得した位置情報の値を用いる．ミリ秒で指定．
+      maximumAge: 20000,
+      // timeout	タイムアウト時間を設定する．ミリ秒で指定．
+      timeout: 1000000,
+    };
+
+    // 位置情報の取得に成功した場合に実行される関数（サンプルでは showPosition）
+    // 位置情報の取得に成功すると，自動的に関数の引数（下記では position）に位置情報が入ってくる．
+    // 位置情報は緯度経度で表現され，それぞれ latitude と longitude の値が対応する．
+    function showPosition(position) {
+      console.log(position);
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      console.log(lat);
+      console.log(lng);
+    }
+
+    // 位置情報の取得に失敗した場合に実行される関数（サンプルでは showError）．
+    // エラーには番号（1, 2, 3）が振ってあり意味が決まっている
+    function showError(error) {
+      const errorMessages = [
+        "位置情報が許可されてません",
+        "現在位置を特定できません",
+        "位置情報を取得する前にタイムアウトになりました",
+      ];
+      alert(`error:${errorMessages[error.code - 1]}`);
+    }
+
+    // 位置情報取得の処理
+    // getCurrentPosition	処理を実行したタイミングで一度だけ位置情報を取得する．
+    navigator.geolocation.getCurrentPosition
+
+      (showPosition, showError, option);
+
+    const map_position = [];
+
+    window.onload = function () {
+      navigator.geolocation.getCurrentPosition(mapsInit, showError, option);
+    };
 
   </script>
 
