@@ -31,9 +31,9 @@
     src='https://www.bing.com/api/maps/mapcontrol?key=AqCT21lRryL1h7ok26SJkReU4rUFNQztuGiNZLP_pCzxw2JUVj5BlWS - SsMU0GlP'
     async defer></script>
   <script>
+// 
 
-
-    let map;
+    // let map;
 
     function mapsInit(position) {
       const lat = position.coords.latitude;
@@ -61,13 +61,13 @@
     // 位置情報の取得に成功した場合に実行される関数（サンプルでは showPosition）
     // 位置情報の取得に成功すると，自動的に関数の引数（下記では position）に位置情報が入ってくる．
     // 位置情報は緯度経度で表現され，それぞれ latitude と longitude の値が対応する．
-    function showPosition(position) {
-      console.log(position);
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-      console.log(lat);
-      console.log(lng);
-    }
+    // function showPosition(position) {
+    //   console.log(position);
+    //   const lat = position.coords.latitude;
+    //   const lng = position.coords.longitude;
+    //   console.log(lat);
+    //   console.log(lng);
+    // }
 
     // 位置情報の取得に失敗した場合に実行される関数（サンプルでは showError）．
     // エラーには番号（1, 2, 3）が振ってあり意味が決まっている
@@ -82,11 +82,11 @@
 
     // 位置情報取得の処理
     // getCurrentPosition	処理を実行したタイミングで一度だけ位置情報を取得する．
-    navigator.geolocation.getCurrentPosition
+    // navigator.geolocation.getCurrentPosition
 
-      (showPosition, showError, option);
+    // (showPosition, showError, option);
 
-    const map_position = [];
+    // const map_position = [];
 
     window.onload = function () {
       navigator.geolocation.getCurrentPosition(mapsInit, showError, option);
